@@ -1,32 +1,60 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
 const hre = require("hardhat");
+// const { Framework } = require("@superfluid-finance/sdk-core")
+// require("dotenv").config()
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
 
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
+  //Varibles
+  const royalty = "500";
+  const URI = "https://gateway.pinata.cloud/ipfs/QmVYvkZ8fmzx2fgbJi72RJHdSz8vJc4bzx69g33UAEmecK";
+  const royaltyAddress = "0xe2b8651bF50913057fF47FC4f02A8e12146083B8";
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const TOKEN = await hre.ethers.getContractFactory("NFTContract");
+  const tokens = await TOKEN.deploy(royalty, URI, royaltyAddress);
+  await tokens.deployed();
+  console.log("Tokens Contract deployed to:", tokens.address);
+  const receipt3 = await tokens.deployTransaction.wait();
+  console.log("gasUsed:" , receipt3.gasUsed);
 
-  await lock.deployed();
+////////////////////////////////////////////////
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+// const provider = new hre.ethers.providers.JsonRpcProvider(
+//   process.env.GOERLI_RPC_URL
+// )
+
+// const sf = await Framework.create({
+//   chainId: (await provider.getNetwork()).chainId,
+//   provider
+// })
+
+// const signers = await hre.ethers.getSigners()
+// Getting the Goerli fDAIx Super Token object from the Framework object
+    // This is fDAIx on goerli - you can change this token to suit your network and desired token addres
+// const daix = await sf.loadSuperToken("fDAIx")
+//console.log("DAIx address:", daix.address);
+
+// let NFTdeployed = '0x556763B180dEEa80ddD29200D936b3787b9AaFF0';
+// let host = '0xEB796bdb90fFA0f28255275e16936D25d3418603';
+// let CFAv1 = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873';
+// let daixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
+
+// // We get the contract to deploy
+// const CallerContract = await hre.ethers.getContractFactory("Caller")
+// //deploy the money router account using the proper host address and the address of the first signer
+// const callerContract = await CallerContract.deploy(NFTdeployed, host, CFAv1, daixAddress)
+
+// await callerContract.deployed()
+
+// console.log("Caller Contract deployed to:", callerContract.address)
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+

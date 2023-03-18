@@ -48,20 +48,20 @@ module.exports = {
     mumbai: {
       url: process.env.MUMBAI_RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      gas: 200000000,
-      gasPrice: 100000000000,
+      // gas: 200000000,
+      // gasPrice: 100000000000,
       saveDeployments: true,
     },
   },
-  gasReporter: {
-    enabled: true,
-    currency: 'USD', //ETH USD
-    outputFile: "gas-report.txt",
-    noColors: true,
-    coinmarketcap: process.env.CMC_KEY,
-   // gasPrice: 21,
-    gasPriceApi: https://api.etherscan.io/api?module=proxy&action=eth_gasPrice,
-  },
+  // gasReporter: {
+  //   enabled: true,
+  //   currency: 'USD', //ETH USD
+  //   outputFile: "gas-report.txt",
+  //   noColors: true,
+  //   coinmarketcap: process.env.CMC_KEY,
+  //  // gasPrice: 21,
+  //   gasPriceApi: https://api.etherscan.io/api?module=proxy&action=eth_gasPrice,
+  // },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
