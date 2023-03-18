@@ -52,6 +52,14 @@ module.exports = {
       // gasPrice: 100000000000,
       saveDeployments: true,
     },
+    mumbaiMnemomic: {
+      url: process.env.MUMBAI_URL || "",
+      accounts: {
+          mnemonic: process.env.MNEMONIC || "",
+          initialIndex: 0,
+          count: 10
+      }
+  }
   },
   // gasReporter: {
   //   enabled: true,

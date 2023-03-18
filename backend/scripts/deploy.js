@@ -8,9 +8,10 @@ async function main() {
   const royalty = "500";
   const URI = "https://gateway.pinata.cloud/ipfs/QmVYvkZ8fmzx2fgbJi72RJHdSz8vJc4bzx69g33UAEmecK";
   const royaltyAddress = "0xe2b8651bF50913057fF47FC4f02A8e12146083B8";
+  const fdaixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
 
   const TOKEN = await hre.ethers.getContractFactory("NFTContract");
-  const tokens = await TOKEN.deploy(royalty, URI, royaltyAddress);
+  const tokens = await TOKEN.deploy(royalty, URI, royaltyAddress, fdaixAddress);
   await tokens.deployed();
   console.log("Tokens Contract deployed to:", tokens.address);
   const receipt3 = await tokens.deployTransaction.wait();
