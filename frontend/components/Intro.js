@@ -8,17 +8,58 @@ import {
   usePrepareContractWrite,
   useContractWrite,
 } from "wagmi";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Contract from "../contract/contract.json";
 import { useRouter } from 'next/router';
 
 
 const Intro = () => {
+  const COUNTDOWN_TIME = 10; // Define the countdown time in seconds
   const { address, isConnected } = useAccount();
   const [loading, setLoading] = useState(false);
   const [nftMinted, setNFTMinted] = useState(false);
+  const [isToggled, setIsToggled] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(10);
+  const [ethCounter, setEthCounter] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
   const router = useRouter();
 
+  useEffect(() => {
+    let ethInterval;
+    if (isRunning) {
+      ethInterval = setInterval(() => {
+        setEthCounter((prevCounter) =>
+          (Number(prevCounter) + 0.00001).toFixed(5)
+        );
+      }, 250);
+    }
+  
+    return () => {
+      clearInterval(ethInterval);
+    };
+  }, [isRunning]);
+  
+  const startCountdown = () => {
+    setTimeLeft(COUNTDOWN_TIME);
+    setEthCounter(0);
+    setIsRunning(true);
+  
+    const countdownInterval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev === 0) {
+          clearInterval(countdownInterval);
+          setIsRunning(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  const toggle = () => {
+    setIsToggled((prev) => !prev);
+  };
 
   const NFTCONTRACT = '0x038190293f20c15B22174c064e95B9Aeab7d83C8'
 
@@ -64,15 +105,38 @@ const Intro = () => {
     }
   };
 
-  const earnNft = async () => {
-    router.push('/Earn');
-  }
+  
+  
+
+  const disableButton = isRunning ? "opacity-50 cursor-not-allowed" : "";
 
   return (
     <div className="bg-black h-screen w-full ">
       <div className="flex flex-col md:flex-row px-5 justify-center lg:mr-16 h-screen w-full">
         <div className="m-auto  pt-14 md:pt-0 ml-auto mr-auto md:ml-24 md:mr-10">
-          <div>{<Image src={heroImage} alt="heroBanner" width={400} />}</div>
+          <div>
+          
+            <Image src={heroImage} alt="heroBanner" width={400} /> 
+            { isToggled && <div className="mt-5 flex items-center justify-center space-x-8">
+            <div className="text-center">
+              <p className="text-2xl md:text-4xl font-bold text-white">
+                {timeLeft}
+              </p>
+              <p className="text-white">Seconds Left</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl md:text-4xl font-bold text-white">{ethCounter}</p>
+              <p className="text-white">ETH</p>
+            </div>
+            <button
+              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              onClick={startCountdown}
+              disabled={isRunning}
+            >
+              {isRunning ? "Campaign Running" : "Start Campaign"}
+            </button>
+          </div> }  
+          </div>
         </div>
 
         <div className="flex flex-col  items-center justify-center -mt-6 md:mt-0 sm:-ml-0 md:-ml-12">
@@ -100,11 +164,11 @@ const Intro = () => {
                   >
                     Claim
                   </button>
-                  <button
-                  className="bg-donut mx-auto hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full"
-                  onClick={earnNft}
-                  >
-                    View NFT
+                  <h1 className="text-md md:text-xl text-white">
+                    Earn money via advertising
+                  </h1>
+                  <button className="bg-donut hover:bg-yellow-600 rounded-full px-6 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full" onClick={toggle}>
+                    {isToggled ? 'On' : 'Off'}
                   </button>
                 </div>
               )}
