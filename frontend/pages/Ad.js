@@ -87,6 +87,7 @@ export default function Ad() {
 
       <Nav />
       <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-row">
         <button
           className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
           onClick={callingStream}
@@ -99,6 +100,7 @@ export default function Ad() {
         >
           Stop stream
         </button>
+        </div>
         <iframe
           src="https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams"
           width="100%"
