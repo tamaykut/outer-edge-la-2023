@@ -6,7 +6,7 @@ async function main() {
 
   // //Varibles
   // const royalty = "500";
-  // const URI = "https://gateway.pinata.cloud/ipfs/QmVYvkZ8fmzx2fgbJi72RJHdSz8vJc4bzx69g33UAEmecK";
+  // const URI = "https://di7o34oiyo2ccvyqu4b32x75s3wrrnbxc73bc4vbnzgb3o7flfkq.arweave.net/Gj7t8cjDtCFXEKcDvV_9lu0YtDcX9hFyoW5MHbvlWVU";
   // const royaltyAddress = "0xe2b8651bF50913057fF47FC4f02A8e12146083B8";
   // const fdaixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
 
