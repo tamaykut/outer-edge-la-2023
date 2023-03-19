@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
+import { getDefaultWallets, RainbowKitProvider, lightTheme, darkTheme } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import {
   mainnet,
@@ -24,7 +24,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Chatter",
+  appName: "inflowNFT",
   chains,
 });
 
@@ -37,11 +37,11 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={lightTheme({
-      accentColor: '#d4b061',  
-      accentColorForeground: 'black',
+      <RainbowKitProvider chains={chains} theme={darkTheme({
+      accentColor: '#323232',  
+      accentColorForeground: 'white',
       borderRadius: 'large',
-      fontStack: 'system',
+      borderColor: 'white',
     })} >
         <Component {...pageProps} />
       </RainbowKitProvider>

@@ -10,11 +10,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 
 export default function Ad() {
-
-  const iframeRef = useRef(null);
-
   const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
-
   const callingContractConfig = {
     address: CALLINGCONTRACT,
     abi: Caller.abi,
@@ -47,7 +43,7 @@ export default function Ad() {
       await callingTxn.wait();
       setLoading(false);
       setNFTMinted(true);
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -65,6 +61,7 @@ export default function Ad() {
       console.log("Error", error);
     },
   });
+
 
   const { data: stopData, writeAsync: stopStream, isLoading: stopIsLoading, isSuccess: stopIsSuccess } = useContractWrite(stopConfig);
 
@@ -91,22 +88,21 @@ export default function Ad() {
 
       <Nav />
       <div className="flex flex-col items-center justify-center h-screen">
-        <div className="flex flex-row">
+        <div className="flex">
         <button
-          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
+          className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
           onClick={callingStream}
         >
-          Start advertising
+          Launch campaign
         </button>
+      
         <button
-          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
+          className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
           onClick={stopStreamFunction}
         >
           Stop stream
         </button>
-        </div>
-
-       
+      </div>
         <iframe
           src="https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams"
           width="100%"
