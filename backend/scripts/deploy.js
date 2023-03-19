@@ -4,18 +4,18 @@ const hre = require("hardhat");
 
 async function main() {
 
-  //Varibles
-  const royalty = "500";
-  const URI = "https://gateway.pinata.cloud/ipfs/QmVYvkZ8fmzx2fgbJi72RJHdSz8vJc4bzx69g33UAEmecK";
-  const royaltyAddress = "0xe2b8651bF50913057fF47FC4f02A8e12146083B8";
-  const fdaixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
+  // //Varibles
+  // const royalty = "500";
+  // const URI = "https://di7o34oiyo2ccvyqu4b32x75s3wrrnbxc73bc4vbnzgb3o7flfkq.arweave.net/Gj7t8cjDtCFXEKcDvV_9lu0YtDcX9hFyoW5MHbvlWVU";
+  // const royaltyAddress = "0xe2b8651bF50913057fF47FC4f02A8e12146083B8";
+  // const fdaixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
 
-  const TOKEN = await hre.ethers.getContractFactory("NFTContract");
-  const tokens = await TOKEN.deploy(royalty, URI, royaltyAddress, fdaixAddress);
-  await tokens.deployed();
-  console.log("Tokens Contract deployed to:", tokens.address);
-  const receipt3 = await tokens.deployTransaction.wait();
-  console.log("gasUsed:" , receipt3.gasUsed);
+  // const TOKEN = await hre.ethers.getContractFactory("NFTContract");
+  // const tokens = await TOKEN.deploy(royalty, URI, royaltyAddress, fdaixAddress);
+  // await tokens.deployed();
+  // console.log("Tokens Contract deployed to:", tokens.address);
+  // const receipt3 = await tokens.deployTransaction.wait();
+  // console.log("gasUsed:" , receipt3.gasUsed);
 
 ////////////////////////////////////////////////
 
@@ -34,19 +34,19 @@ async function main() {
 // const daix = await sf.loadSuperToken("fDAIx")
 //console.log("DAIx address:", daix.address);
 
-// let NFTdeployed = '0x556763B180dEEa80ddD29200D936b3787b9AaFF0';
-// let host = '0xEB796bdb90fFA0f28255275e16936D25d3418603';
-// let CFAv1 = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873';
-// let daixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
+let NFTdeployed = '0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a';
+let host = '0xEB796bdb90fFA0f28255275e16936D25d3418603';
+let CFAv1 = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873';
+let daixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
 
-// // We get the contract to deploy
-// const CallerContract = await hre.ethers.getContractFactory("Caller")
-// //deploy the money router account using the proper host address and the address of the first signer
-// const callerContract = await CallerContract.deploy(NFTdeployed, host, CFAv1, daixAddress)
+// We get the contract to deploy
+const CallerContract = await hre.ethers.getContractFactory("Caller")
+//deploy the money router account using the proper host address and the address of the first signer
+const callerContract = await CallerContract.deploy(NFTdeployed, host, CFAv1, daixAddress)
 
-// await callerContract.deployed()
+await callerContract.deployed()
 
-// console.log("Caller Contract deployed to:", callerContract.address)
+console.log("Caller Contract deployed to:", callerContract.address)
 
 }
 

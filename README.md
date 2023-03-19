@@ -1,1 +1,53 @@
 # outer-edge-la-2023
+# CHATTER
+
+Set beneficiaries to the assets in your wallet.  ERC-20, ERC-115 or ERC-721 tokens will automatically transfer upon death or loss of keys.
+
+Use it was a living will or as a backup for a lost private keys, trust that your assests are not lost forever in your wallet
+
+ [Video Demo](https://www.youtube.com/watch?v=1hfuYu83-3g) | 
+ [Live Site](https://expir3.vercel.app/) | 
+
+ | Mumbai | ------ Deployments ------ |
+ | --------------------------------------------- | ------------------------------------------------------------------ |
+ | [NFT Contract Address](https://mumbai.polygonscan.com/address/0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a) | 0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a |
+ | [Streaming Contract ](https://mumbai.polygonscan.com/address/0x58ed25d94F562565A89Cd425A84D069813Bf934e) | 0x58ed25d94F562565A89Cd425A84D069813Bf934e |
+
+
+## Technologies
+
+This project is built with the following open source libraries, frameworks and languages. User choice of framework used, available in plain js or typescript.
+| Tech | Description |
+| --------------------------------------------- | ------------------------------------------------------------------ |
+| ------ | ------ React Frontend Environment ------ |
+| [Next JS](https://nextjs.org/) | React Framework |
+| ------ | ------ CSS Framework ------ |
+| [Tailwind](https://tailwindcss.com/) | A utility-first CSS framework |
+| ------ | ------ Ethereum Development Environment ------ |
+| [Hardhat](https://hardhat.org/) | Ethereum development environment for professionals |
+| ------ | ------ Included Libraries ------ |
+| [WAGMI](https://wagmi.sh/) | A set of React Hooks for Web3 |
+| [RainbowKit](https://www.rainbowkit.com/docs/introduction) | RainbowKit is a React library that makes it easy to add wallet connection to your dapp. |
+| [SuperFluid](https://www.superfluid.finance/) | Money Streaming and distribution platform
+
+
+## Details
+
+Advertisers have the abillity to pay NFT holders to advert to them directly via their NFTs.
+The advertiser will pay to stream money from the caller contract to the NFT collection contract using
+SuperFluid's streaming money platform.  We chose streaming because we want the advertising to last as
+long as the advertiser is willing to pay to keep the advert up (longer the advert the bigger the cost).
+The NFT handles the distribution of the income earned through the revenue streaming.  Each NFT
+accounts for 1 equal claim of the income recieved.  Handling thousands of wallets, leveraging SuperFluids
+Instant Distribution System we can save a massive amount of gas and resources handling the dynamic distribution.  Considering much of the trading that happens with NFTs, the transfer of ownership is taken accounted for within the NFT releasing the rights to claim from the original owner to the new owner for future claims.
+
+| [Watch Streams](https://console.superfluid.finance/mumbai/accounts/0x58ed25d94f562565a89cd425a84d069813bf934e?tab=streams) | See the money paid out in real time
+
+
+
+## To Work on
+
+The ability to wrap the native token seemlessly to the wrapped streaming token asset
+The abilyt for users to "OPT IN"
+
+
