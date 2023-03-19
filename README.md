@@ -1,6 +1,17 @@
 # outer-edge-la-2023
 # INFLOW NFT
 
+- [x] Concept & design
+- [x] Build frontend
+- [x] Build backend
+- [x] Build smart contracts
+- [x] Deploy smart contracts to Testnet
+- [x] Test user flow and transactions in localhost
+- [x] Deploy fully functional dApp via Netlify
+- [x] Record demo video
+- [x] Finalize deck
+- [ ] Recover :)
+
 Set beneficiaries to the assets in your wallet.  ERC-20, ERC-115 or ERC-721 tokens will automatically transfer upon death or loss of keys.
 
 Use it was a living will or as a backup for a lost private keys, trust that your assests are not lost forever in your wallet
