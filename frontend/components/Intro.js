@@ -208,7 +208,7 @@ const Intro = () => {
           </div> }  
 
           {/* Stream Money to contract */}
-          <div className="space-x-3 pt-2">
+          {/* <div className="space-x-3 pt-2">
           <button
               className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
               onClick={callingStream}
@@ -221,7 +221,7 @@ const Intro = () => {
             >
               {"Stop Stream"}
             </button>
-            </div>
+            </div> */}
           </div>
         </div>
 
