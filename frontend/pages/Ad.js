@@ -49,6 +49,7 @@ export default function Ad() {
       await callingTxn.wait();
       setLoading(false);
       setNFTMinted(true);
+      
     } catch (error) {
       console.log(error);
     }
