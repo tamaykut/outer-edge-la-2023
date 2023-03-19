@@ -9,6 +9,7 @@ import {IConstantFlowAgreementV1} from "@superfluid-finance/ethereum-contracts/c
 //import { ISuperToken } from "@superfluid-finance/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol";
 //import { SuperTokenV1Library } from "@superfluid-finance/ethereum-contracts/contracts/apps/SuperTokenV1Library.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface INFTContract {
     function setTokenUri(string memory _baseTokenUri) external;
@@ -56,7 +57,7 @@ contract Caller is Ownable {
         streaming = true;
         //create the flowrate
         //transfer tokens to the other contract
-       // _createFlow(theNFTContractAddress, 1000000000000000);  //OG 1000000000000000000
+        _createFlow(theNFTContractAddress, 1000000000000000);  //OG 1000000000000000000
        
     }
 
@@ -67,7 +68,7 @@ contract Caller is Ownable {
         streaming = false;
 
         //deleteFlow - fix
-       // _deleteFlow(address(this), theNFTContractAddress);
+        _deleteFlow(address(this), theNFTContractAddress);
     }
 
     function _createFlow(address to, int96 flowRate) internal {
@@ -97,6 +98,14 @@ contract Caller is Ownable {
             ),
             "0x"
         );
+    }
+
+    function changeSuperToken(address acceptedToken) public onlyOwner() {
+    	_acceptedToken = ISuperToken(acceptedToken);
+  	}
+    //function to pull out token
+    function withdrawToken(IERC20 token) public onlyOwner {
+        require(token.transfer(msg.sender, token.balanceOf(address(this))), "Unable to transfer");
     }
 }
 

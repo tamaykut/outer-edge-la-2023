@@ -9,7 +9,7 @@ import {
   useContractWrite,
 } from "wagmi";
 import React, { useState, useEffect } from "react";
-import Contract from "../contract/contract.json";
+import Contract from "../contract/nftContract.json";
 import { useRouter } from 'next/router';
 
 
