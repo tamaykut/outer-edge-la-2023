@@ -1,5 +1,5 @@
 # outer-edge-la-2023
-# CHATTER
+# INFLOW NFT
 
 Set beneficiaries to the assets in your wallet.  ERC-20, ERC-115 or ERC-721 tokens will automatically transfer upon death or loss of keys.
 
