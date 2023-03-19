@@ -85,26 +85,34 @@ export default function Ad() {
   return (
     <div className="bg-black h-screen w-full ">
       <Head>
-      <title>Talking NFT</title>
-      <meta name="description" content="Created at Outer Edge Hackerthon LA" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+        <title>Talking NFT</title>
+        <meta name="description" content="Created at Outer Edge Hackerthon LA" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <Nav />
-    <div className="flex flex-col items-center justify-center h-screen">
-      <button
-        className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
-        onClick={callingStream}
-      >
-        Start advertising
-      </button>
-      <button
-        className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
-        onClick={stopStreamFunction}
-      >
-        Stop stream
-      </button>
-    </div>
+      <Nav />
+      <div className="flex flex-col items-center justify-center h-screen">
+        <button
+          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
+          onClick={callingStream}
+        >
+          Start advertising
+        </button>
+        <button
+          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
+          onClick={stopStreamFunction}
+        >
+          Stop stream
+        </button>
+        <iframe
+          src="https://www.sureel.io/"
+          width="100%"
+          height="600px"
+          frameBorder="0"
+          className="m-5"
+        ></iframe>
+      </div>
+      
     </div>
   );
 }
