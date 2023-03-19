@@ -10,8 +10,8 @@ Use it was a living will or as a backup for a lost private keys, trust that your
 
  | Mumbai | ------ Deployments ------ |
  | --------------------------------------------- | ------------------------------------------------------------------ |
- | [NFT Contract Address](https://mumbai.polygonscan.com/address/0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a) | 0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a |
- | [Streaming Contract ](https://mumbai.polygonscan.com/address/0x58ed25d94F562565A89Cd425A84D069813Bf934e) | 0x58ed25d94F562565A89Cd425A84D069813Bf934e |
+ | [NFT Contract Address](https://mumbai.polygonscan.com/address/0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a) | 0xbCe18071E78B0bCE00db6A243a9585Ae5e3A7D05 |
+ | [Streaming Contract ](https://mumbai.polygonscan.com/address/0x58ed25d94F562565A89Cd425A84D069813Bf934e) | 0xF550146991831Be20872fA4809b23dadCc371C43 |
 
 
 ## Technologies
@@ -47,7 +47,7 @@ The NFT handles the distribution of the income earned through the revenue stream
 accounts for 1 equal claim of the income recieved.  Handling thousands of wallets, leveraging SuperFluids
 Instant Distribution System we can save a massive amount of gas and resources handling the dynamic distribution.  Considering much of the trading that happens with NFTs, the transfer of ownership is taken accounted for within the NFT releasing the rights to claim from the original owner to the new owner for future claims.
 
-| [Watch Streams](https://console.superfluid.finance/mumbai/accounts/0x58ed25d94f562565a89cd425a84d069813bf934e?tab=streams) | See the money paid out in real time
+| [Watch Streams](https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams) | See the money paid out in real time
 
 
 
