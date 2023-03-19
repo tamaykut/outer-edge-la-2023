@@ -12,9 +12,6 @@
 - [x] Finalize deck
 - [ ] Recover :)
 
-Set beneficiaries to the assets in your wallet.  ERC-20, ERC-115 or ERC-721 tokens will automatically transfer upon death or loss of keys.
-
-Use it was a living will or as a backup for a lost private keys, trust that your assests are not lost forever in your wallet
 
  [Video Demo](https://www.loom.com/share/37c086bf144e479eb151043f8e11da45) | 
  [Live Site](https://64177103b99a7b000828ac4d--musical-pika-fed894.netlify.app/) | 
