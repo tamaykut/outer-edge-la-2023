@@ -63,6 +63,6 @@ This project is built with the following open source libraries, frameworks and l
 ## To Work on
 
 The ability to wrap the native token seemlessly to the wrapped streaming token asset
-The abilyt for users to "OPT IN"
-
+The ability for users to "OPT IN"
+Instant payment rewarded for every second of ad content watched, instead of ongoing money stream
 
