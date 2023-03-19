@@ -117,7 +117,7 @@ const Intro = () => {
           <div>
           
             <Image src={heroImage} alt="heroBanner" width={400} /> 
-            { isToggled && <div className="mt-5 flex items-center justify-center space-x-8">
+            { isToggled && isConnected && <div className="mt-5 flex items-center justify-center space-x-8">
             <div className="text-center">
               <p className="text-2xl md:text-4xl font-bold text-white">
                 {timeLeft}
@@ -141,8 +141,8 @@ const Intro = () => {
 
         <div className="flex flex-col  items-center justify-center -mt-6 md:mt-0 sm:-ml-0 md:-ml-12">
           <div className="text-center md:text-left md:ml-16 space-x-2 space-y-5">
-            <h1 className="text-5xl md:text-7xl font-bold text-white ">
-              Claim Your NFT
+            <h1 className="text-xl md:text-3xl font-bold text-white ">
+              Claim your NFT and earn money
             </h1>
             <h1 className="text-md md:text-xl text-white">
               Connect Your Wallet and Claim
