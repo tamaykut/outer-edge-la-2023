@@ -1,11 +1,5 @@
-import Image from 'next/image';
 import Head from 'next/head';
 import Nav from '../components/Nav';
-import Intro from '../components/Intro';
-import styles from '../styles/Home.module.css';
-import Chatter from '../components/Chatter';
-import Footer from '../components/Footer';
-import Advertiser from '../components/Advertiser';
 import Caller from "../contract/callerContract.json";
 import {
   useAccount,
@@ -105,7 +99,7 @@ export default function Ad() {
           Stop stream
         </button>
         <iframe
-          src="https://www.sureel.io/"
+          src="https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams"
           width="100%"
           height="600px"
           frameBorder="0"
