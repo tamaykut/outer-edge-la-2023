@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-//import heroImage from "../images/pandar.png";
-import heroImage from "../images/lp.jpg";
+import heroImage from "../images/NFT1.png";
 import {
   useAccount,
   usePrepareContractWrite,
   useContractWrite,
 } from "wagmi";
 import React, { useState, useEffect } from "react";
-import Contract from "../contract/contract.json";
+import Contract from "../contract/nftContract.json";
+import Caller from "../contract/callerContract.json";
 import { useRouter } from 'next/router';
 
 
@@ -61,21 +61,27 @@ const Intro = () => {
     setIsToggled((prev) => !prev);
   };
 
-  const NFTCONTRACT = '0x038190293f20c15B22174c064e95B9Aeab7d83C8'
+  const NFTCONTRACT = '0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a'
+  const CALLINGCONTRACT = '0x58ed25d94F562565A89Cd425A84D069813Bf934e'
 
   const contractConfig = {
-    address: NFTCONTRACT, //process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+    address: NFTCONTRACT,
     abi: Contract.abi,
+  };
+
+  const callingContractConfig = {
+    address: CALLINGCONTRACT,
+    abi: Caller.abi,
   };
 
   const resetMinter = async () => {
     setNFTMinted(false);
   };
 
-  //wagmi Mint
+  //wagmi Mint  //////////////////////////////////
   const { config: approveConfig, data } = usePrepareContractWrite({
     ...contractConfig,
-    functionName: "safeMint",
+    functionName: "mint",
    // args: [THEFTCONTRACT, true],
     overrides: {
       gasLimit: 1500000,
@@ -104,8 +110,69 @@ const Intro = () => {
       console.log(error);
     }
   };
-
+  //////////////////////////////////////////////////////
   
+  //wagmi Calling Contract  //////////////////////////////////
+  const { config: callingConfig, data: callData } = usePrepareContractWrite({
+    ...callingContractConfig,
+    functionName: "setTokenUri",
+    args: ["https://wn2nlt2slbn27yjxuoxd23ufdep7qghrhjkp3o4ogm4y6altlhia.arweave.net/s3TVz1JYW6_hN6OuPW6FGR_4GPE6VP27jjM5jwFzWdA"],  // <<<<<<<<<<<<<<<< Hardcoded Advertisement URI
+    overrides: {
+      gasLimit: 1500000,
+    },  
+    onError(error) {
+      console.log("Error", error);
+    },
+  });
+
+  const {
+    data: callingData,
+    writeAsync: callingContract,
+    isLoading: callingIsLoading,
+    isSuccess: callingIsSuccess,
+  } = useContractWrite(callingConfig);
+
+  const callingStream = async () => {
+    try {
+      let callingTxn = await callingContract?.();
+      setLoading(true);
+      await callingTxn.wait();
+      setLoading(false);
+      setNFTMinted(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //////////////////////////////////////////////////////
+
+  ///Stop Stream ///////////////////////////////////////
+  const { config: stopConfig, data: stopStreamData } = usePrepareContractWrite({
+    ...callingContractConfig,
+    functionName: "stopStream",
+    overrides: {
+      gasLimit: 1500000,
+    },
+    onError(error) {
+      console.log("Error", error);
+    },
+  });
+
+  const { data: stopData, writeAsync: stopStream, isLoading: stopIsLoading, isSuccess: stopIsSuccess } = useContractWrite(stopConfig);
+
+  const stopStreamFunction = async () => {
+    try {
+      let stopTxn = await stopStream?.();
+      setLoading(true);
+      await stopTxn.wait();
+      setLoading(false);
+      setNFTMinted(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };  
+  //////////////////////////////////////////////////////
+
+
   
 
   const disableButton = isRunning ? "opacity-50 cursor-not-allowed" : "";
@@ -116,7 +183,7 @@ const Intro = () => {
         <div className="m-auto  pt-14 md:pt-0 ml-auto mr-auto md:ml-24 md:mr-10">
           <div>
           
-            <Image src={heroImage} alt="heroBanner" width={400} /> 
+            <Image src={heroImage} alt="heroBanner" /> 
             { isToggled && isConnected && <div className="mt-5 flex items-center justify-center space-x-8">
             <div className="text-center">
               <p className="text-2xl md:text-4xl font-bold text-white">
@@ -135,7 +202,25 @@ const Intro = () => {
             >
               {isRunning ? "Campaign Running" : "Start Campaign"}
             </button>
+
+            
           </div> }  
+
+          {/* Stream Money to contract */}
+          <div className="space-x-3 pt-2">
+          <button
+              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              onClick={callingStream}
+            >
+              {"Advertise"}
+            </button>
+            <button
+              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              onClick={stopStreamFunction}
+            >
+              {"Stop Stream"}
+            </button>
+            </div>
           </div>
         </div>
 

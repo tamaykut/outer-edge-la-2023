@@ -12,17 +12,19 @@ import {
 } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const { chains, provider } = configureChains(
-  [goerli],
+  [polygonMumbai],
   [
     //alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), 
-  publicProvider()
+    //jsonRpcProvider({ url: "https://rpc.ankr.com/polygon_mumbai" }),
+    publicProvider()
   ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Pandonut",
+  appName: "Chatter",
   chains,
 });
 
