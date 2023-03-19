@@ -184,7 +184,7 @@ const Intro = () => {
         <div className="m-auto  pt-14 md:pt-0 ml-auto mr-auto md:ml-24 md:mr-10">
           <div>
           
-            <Image src={heroImage} alt="heroBanner" /> 
+            <Image src={heroImage} alt="heroBanner" width ={400} height={400}/> 
             { isToggled && isConnected && <div className="mt-5 flex items-center justify-center space-x-8">
             <div className="text-center">
               <p className="text-2xl md:text-4xl font-bold text-white">
