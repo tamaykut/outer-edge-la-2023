@@ -1,5 +1,5 @@
-# Outer Edge Hackathon 2023
-# InflowNFTs
+# outer-edge-la-2023
+# CHATTER
 
 Set beneficiaries to the assets in your wallet.  ERC-20, ERC-115 or ERC-721 tokens will automatically transfer upon death or loss of keys.
 
@@ -32,6 +32,12 @@ This project is built with the following open source libraries, frameworks and l
 
 
 ## Details
+
+Inflow NFT is an NFT asset that allows users to monetize the NFT ownership via ad views and a distributed advertising dollars model.
+
+It is a suite of smart contracts that streams gas-efficient revenue from a campaign wallet to both the NFT creator and holder wallets. Funds are 
+distributed per second due to the super tokens protocol ability. This mean that as a video ad runs, people can be paid for the number of seconds it is 
+actually watched.  
 
 Advertisers have the abillity to pay NFT holders to advert to them directly via their NFTs.
 The advertiser will pay to stream money from the caller contract to the NFT collection contract using
