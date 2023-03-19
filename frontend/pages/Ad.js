@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Caller from "../contract/callerContract.json";
-import { useRef, useEffect } from 'react';
 import {
   useAccount,
   usePrepareContractWrite,
@@ -11,13 +10,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 
 export default function Ad() {
-  const iframeRef = useRef(null);
-
-  const iframeRef = useRef(null);
-
   const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
-  let toggle = false;
-
   const callingContractConfig = {
     address: CALLINGCONTRACT,
     abi: Caller.abi,
@@ -50,7 +43,6 @@ export default function Ad() {
       await callingTxn.wait();
       setLoading(false);
       setNFTMinted(true);
-      toggle = !toggle;
 
     } catch (error) {
       console.log(error);
@@ -71,12 +63,6 @@ export default function Ad() {
   });
 
 
-  useEffect(() => {
-    if (toggle) {
-      iframeRef.current.contentWindow.location.reload();
-    }
-  }, [toggle]);
-
   const { data: stopData, writeAsync: stopStream, isLoading: stopIsLoading, isSuccess: stopIsSuccess } = useContractWrite(stopConfig);
 
   const stopStreamFunction = async () => {
@@ -86,7 +72,6 @@ export default function Ad() {
       await stopTxn.wait();
       setLoading(false);
       setNFTMinted(true);
-      toggle = !toggle;
     } catch (error) {
       console.log(error);
     }
