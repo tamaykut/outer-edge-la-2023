@@ -197,7 +197,7 @@ const Intro = () => {
               <p className="text-white">ETH</p>
             </div>
             <button
-              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
               onClick={startCountdown}
               disabled={isRunning}
             >
@@ -206,22 +206,6 @@ const Intro = () => {
 
             
           </div> }  
-
-          {/* Stream Money to contract */}
-          <div className="space-x-3 pt-2">
-          <button
-              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
-              onClick={callingStream}
-            >
-              {"Advertise"}
-            </button>
-            <button
-              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
-              onClick={stopStreamFunction}
-            >
-              {"Stop Stream"}
-            </button>
-            </div>
           </div>
         </div>
 
@@ -245,15 +229,17 @@ const Intro = () => {
               {!isLoading && !loading && !nftMinted && isConnected && (
                 <div className="flex flex-col space-y-4">
                   <button
-                  className="bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full"
+                  className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
                   onClick={approveFunction}
                   >
-                    Claim
+                    Mint
                   </button>
                   <h1 className="text-md md:text-xl text-white">
                     Earn money via advertising
                   </h1>
-                  <button className="bg-donut hover:bg-yellow-600 rounded-full px-6 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full" onClick={toggle}>
+                  <button 
+                    className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
+                    onClick={toggle}>
                     {isToggled ? 'On' : 'Off'}
                   </button>
                 </div>
@@ -261,7 +247,7 @@ const Intro = () => {
 
               {!isConnected && (
                 <>
-                  <ConnectButton />
+                  <ConnectButton/>
                 </>
               )}
 
