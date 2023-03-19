@@ -64,8 +64,8 @@ const Intro = () => {
     }
   };
 
-  const chatNft = async () => {
-    router.push('/Chat');
+  const earnNft = async () => {
+    router.push('/Earn');
   }
 
   return (
@@ -102,9 +102,9 @@ const Intro = () => {
                   </button>
                   <button
                   className="bg-donut mx-auto hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full"
-                  onClick={chatNft}
+                  onClick={earnNft}
                   >
-                    Talk to me! 
+                    View NFT
                   </button>
                 </div>
               )}

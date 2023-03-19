@@ -39,7 +39,7 @@ const Header = () => {
 
           <Link legacyBehavior href="/">
             <a className="text-xl font-bold text-white inline-block whitespace-nowrap uppercase ">
-              Talking NFTs
+              Earning NFTs
             </a>
           </Link>
 
