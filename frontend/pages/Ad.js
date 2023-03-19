@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Caller from "../contract/callerContract.json";
+import { useRef, useEffect } from 'react';
 import {
   useAccount,
   usePrepareContractWrite,
@@ -10,10 +11,12 @@ import React, { useState, useEffect, useRef } from "react";
 
 
 export default function Ad() {
+  const iframeRef = useRef(null);
 
   const iframeRef = useRef(null);
 
   const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
+  let toggle = false;
 
   const callingContractConfig = {
     address: CALLINGCONTRACT,
@@ -47,7 +50,8 @@ export default function Ad() {
       await callingTxn.wait();
       setLoading(false);
       setNFTMinted(true);
-      
+      toggle = !toggle;
+
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +70,13 @@ export default function Ad() {
     },
   });
 
+
+  useEffect(() => {
+    if (toggle) {
+      iframeRef.current.contentWindow.location.reload();
+    }
+  }, [toggle]);
+
   const { data: stopData, writeAsync: stopStream, isLoading: stopIsLoading, isSuccess: stopIsSuccess } = useContractWrite(stopConfig);
 
   const stopStreamFunction = async () => {
@@ -75,6 +86,7 @@ export default function Ad() {
       await stopTxn.wait();
       setLoading(false);
       setNFTMinted(true);
+      toggle = !toggle;
     } catch (error) {
       console.log(error);
     }
@@ -91,19 +103,22 @@ export default function Ad() {
 
       <Nav />
       <div className="flex flex-col items-center justify-center h-screen">
-        <div className="flex flex-row">
+        <div className="flex">
         <button
-          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
+          className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
           onClick={callingStream}
         >
-          Start advertising
+          Launch campaign
         </button>
+      
         <button
-          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
+          className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
           onClick={stopStreamFunction}
         >
           Stop stream
         </button>
+      </div>
+    
         </div>
 
        
