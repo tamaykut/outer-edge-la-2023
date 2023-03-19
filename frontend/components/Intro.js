@@ -116,7 +116,7 @@ const Intro = () => {
   const { config: callingConfig, data: callData } = usePrepareContractWrite({
     ...callingContractConfig,
     functionName: "setTokenUri",
-    args: ["theNewURI"],  // <<<<<<<<<<<<<<<< Hardcoded Advertisement URI
+    args: ["https://wn2nlt2slbn27yjxuoxd23ufdep7qghrhjkp3o4ogm4y6altlhia.arweave.net/s3TVz1JYW6_hN6OuPW6FGR_4GPE6VP27jjM5jwFzWdA"],  // <<<<<<<<<<<<<<<< Hardcoded Advertisement URI
     overrides: {
       gasLimit: 1500000,
     },  
