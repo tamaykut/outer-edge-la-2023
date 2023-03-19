@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-//import heroImage from "../images/pandar.png";
 import heroImage from "../images/lp.jpg";
 import {
   useAccount,
@@ -10,6 +9,7 @@ import {
 } from "wagmi";
 import React, { useState, useEffect } from "react";
 import Contract from "../contract/nftContract.json";
+import Caller from "../contract/callerContract.json";
 import { useRouter } from 'next/router';
 
 
@@ -61,21 +61,27 @@ const Intro = () => {
     setIsToggled((prev) => !prev);
   };
 
-  const NFTCONTRACT = '0x038190293f20c15B22174c064e95B9Aeab7d83C8'
+  const NFTCONTRACT = '0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a'
+  const CALLINGCONTRACT = '0x58ed25d94F562565A89Cd425A84D069813Bf934e'
 
   const contractConfig = {
-    address: NFTCONTRACT, //process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+    address: NFTCONTRACT,
     abi: Contract.abi,
+  };
+
+  const callingContractConfig = {
+    address: CALLINGCONTRACT,
+    abi: Caller.abi,
   };
 
   const resetMinter = async () => {
     setNFTMinted(false);
   };
 
-  //wagmi Mint
+  //wagmi Mint  //////////////////////////////////
   const { config: approveConfig, data } = usePrepareContractWrite({
     ...contractConfig,
-    functionName: "safeMint",
+    functionName: "mint",
    // args: [THEFTCONTRACT, true],
     overrides: {
       gasLimit: 1500000,
@@ -104,8 +110,69 @@ const Intro = () => {
       console.log(error);
     }
   };
-
+  //////////////////////////////////////////////////////
   
+  //wagmi Calling Contract  //////////////////////////////////
+  const { config: callingConfig, data: callData } = usePrepareContractWrite({
+    ...callingContractConfig,
+    functionName: "setTokenUri",
+    args: ["theNewURI"],  // <<<<<<<<<<<<<<<< Hardcoded Advertisement URI
+    overrides: {
+      gasLimit: 1500000,
+    },  
+    onError(error) {
+      console.log("Error", error);
+    },
+  });
+
+  const {
+    data: callingData,
+    writeAsync: callingContract,
+    isLoading: callingIsLoading,
+    isSuccess: callingIsSuccess,
+  } = useContractWrite(callingConfig);
+
+  const callingStream = async () => {
+    try {
+      let callingTxn = await callingContract?.();
+      setLoading(true);
+      await callingTxn.wait();
+      setLoading(false);
+      setNFTMinted(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //////////////////////////////////////////////////////
+
+  ///Stop Stream ///////////////////////////////////////
+  const { config: stopConfig, data: stopStreamData } = usePrepareContractWrite({
+    ...callingContractConfig,
+    functionName: "stopStream",
+    overrides: {
+      gasLimit: 1500000,
+    },
+    onError(error) {
+      console.log("Error", error);
+    },
+  });
+
+  const { data: stopData, writeAsync: stopStream, isLoading: stopIsLoading, isSuccess: stopIsSuccess } = useContractWrite(stopConfig);
+
+  const stopStreamFunction = async () => {
+    try {
+      let stopTxn = await stopStream?.();
+      setLoading(true);
+      await stopTxn.wait();
+      setLoading(false);
+      setNFTMinted(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };  
+  //////////////////////////////////////////////////////
+
+
   
 
   const disableButton = isRunning ? "opacity-50 cursor-not-allowed" : "";
@@ -135,7 +202,25 @@ const Intro = () => {
             >
               {isRunning ? "Campaign Running" : "Start Campaign"}
             </button>
+
+            
           </div> }  
+
+          {/* Stream Money to contract */}
+          <div className="space-x-3 pt-2">
+          <button
+              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              onClick={callingStream}
+            >
+              {"Advertise"}
+            </button>
+            <button
+              className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold md:mb-0 min-w-1/4 max-w-full ${disableButton}`}
+              onClick={stopStreamFunction}
+            >
+              {"Stop Stream"}
+            </button>
+            </div>
           </div>
         </div>
 
