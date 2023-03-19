@@ -62,8 +62,8 @@ const Intro = () => {
     setIsToggled((prev) => !prev);
   };
 
-  const NFTCONTRACT = '0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a'
-  const CALLINGCONTRACT = '0x58ed25d94F562565A89Cd425A84D069813Bf934e'
+  const NFTCONTRACT = '0xbCe18071E78B0bCE00db6A243a9585Ae5e3A7D05'
+  const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
 
   const contractConfig = {
     address: NFTCONTRACT,

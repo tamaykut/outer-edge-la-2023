@@ -34,7 +34,7 @@ async function main() {
 // const daix = await sf.loadSuperToken("fDAIx")
 //console.log("DAIx address:", daix.address);
 
-let NFTdeployed = '0xb5dB35352F20E35F2370f990d31c261CF2FA1C3a';
+let NFTdeployed = '0xbCe18071E78B0bCE00db6A243a9585Ae5e3A7D05';
 let host = '0xEB796bdb90fFA0f28255275e16936D25d3418603';
 let CFAv1 = '0x49e565Ed1bdc17F3d220f72DF0857C26FA83F873';
 let daixAddress = '0x5D8B4C2554aeB7e86F387B4d6c00Ac33499Ed01f';
