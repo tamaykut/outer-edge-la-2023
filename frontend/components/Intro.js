@@ -252,7 +252,9 @@ const Intro = () => {
               )}
 
               {isLoading && !loading && !nftMinted && isConnected && (
-                <button className="w-1/2 bg-donut hover:bg-yellow-600 rounded-full px-12 py-2  text-black font-bold mb-10 md:mb-0">
+                <button 
+                className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
+                >
                   Loading
                 </button>
               )}
@@ -271,7 +273,7 @@ const Intro = () => {
 
                   <br></br>
                   <button
-                    className="bg-donut hover:bg-yellow-600 text-black font-bold rounded-full px-12 py-2 sm:w-auto mb-10 md:mb-0"
+                    className="bg-black text-white border-white border rounded-full px-12 py-6 font-bold mb-5 mr-5 hover:bg-red-500 hover:scale-110 transition-all duration-300"
                     onClick={() => resetMinter()}
                   >
                     Go Back

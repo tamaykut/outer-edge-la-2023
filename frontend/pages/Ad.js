@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Caller from "../contract/callerContract.json";
+import { useRef, useEffect } from 'react';
 import {
   useAccount,
   usePrepareContractWrite,
@@ -11,7 +12,7 @@ export default function Ad() {
   const iframeRef = useRef(null);
 
   const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
-  let toggleSuccess = true;
+  let toggle = false;
 
   const callingContractConfig = {
     address: CALLINGCONTRACT,
