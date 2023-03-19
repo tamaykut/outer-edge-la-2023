@@ -12,6 +12,23 @@
 - [x] Finalize deck
 - [ ] Recover :)
 
+## Details
+
+Inflow NFT is an NFT asset that allows users to monetize the NFT ownership via ad views and a distributed advertising dollars model.
+
+It is a suite of smart contracts that streams gas-efficient revenue from a campaign wallet to both the NFT creator and holder wallets. Funds are 
+distributed per second due to the super tokens protocol ability. This mean that as a video ad runs, people can be paid for the number of seconds it is 
+actually watched.  
+
+Advertisers have the abillity to pay NFT holders to advert to them directly via their NFTs.
+The advertiser will pay to stream money from the caller contract to the NFT collection contract using
+SuperFluid's streaming money platform.  We chose streaming because we want the advertising to last as
+long as the advertiser is willing to pay to keep the advert up (longer the advert the bigger the cost).
+The NFT handles the distribution of the income earned through the revenue streaming.  Each NFT
+accounts for 1 equal claim of the income recieved.  Handling thousands of wallets, leveraging SuperFluids
+Instant Distribution System we can save a massive amount of gas and resources handling the dynamic distribution.  Considering much of the trading that happens with NFTs, the transfer of ownership is taken accounted for within the NFT releasing the rights to claim from the original owner to the new owner for future claims.
+
+| [Watch Streams](https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams) | See the money paid out in real time
 
  [Video Demo](https://www.loom.com/share/37c086bf144e479eb151043f8e11da45) | 
  [Live Site](https://64177103b99a7b000828ac4d--musical-pika-fed894.netlify.app/) | 
@@ -39,23 +56,7 @@ This project is built with the following open source libraries, frameworks and l
 | [SuperFluid](https://www.superfluid.finance/) | Money Streaming and distribution platform
 
 
-## Details
 
-Inflow NFT is an NFT asset that allows users to monetize the NFT ownership via ad views and a distributed advertising dollars model.
-
-It is a suite of smart contracts that streams gas-efficient revenue from a campaign wallet to both the NFT creator and holder wallets. Funds are 
-distributed per second due to the super tokens protocol ability. This mean that as a video ad runs, people can be paid for the number of seconds it is 
-actually watched.  
-
-Advertisers have the abillity to pay NFT holders to advert to them directly via their NFTs.
-The advertiser will pay to stream money from the caller contract to the NFT collection contract using
-SuperFluid's streaming money platform.  We chose streaming because we want the advertising to last as
-long as the advertiser is willing to pay to keep the advert up (longer the advert the bigger the cost).
-The NFT handles the distribution of the income earned through the revenue streaming.  Each NFT
-accounts for 1 equal claim of the income recieved.  Handling thousands of wallets, leveraging SuperFluids
-Instant Distribution System we can save a massive amount of gas and resources handling the dynamic distribution.  Considering much of the trading that happens with NFTs, the transfer of ownership is taken accounted for within the NFT releasing the rights to claim from the original owner to the new owner for future claims.
-
-| [Watch Streams](https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams) | See the money paid out in real time
 
 
 
