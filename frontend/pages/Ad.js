@@ -7,8 +7,12 @@ import {
   usePrepareContractWrite,
   useContractWrite,
 } from "wagmi";
+import React, { useState, useEffect, useRef } from "react";
+
 
 export default function Ad() {
+  const iframeRef = useRef(null);
+
   const iframeRef = useRef(null);
 
   const CALLINGCONTRACT = '0xF550146991831Be20872fA4809b23dadCc371C43'
@@ -47,6 +51,7 @@ export default function Ad() {
       setLoading(false);
       setNFTMinted(true);
       toggle = !toggle;
+
     } catch (error) {
       console.log(error);
     }
@@ -113,7 +118,6 @@ export default function Ad() {
           Stop stream
         </button>
       </div>
-     
         <iframe
           src="https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams"
           width="100%"
@@ -121,6 +125,8 @@ export default function Ad() {
           frameBorder="0"
           className="m-5"
         ></iframe>
+       
+  
       </div>
       
     </div>
