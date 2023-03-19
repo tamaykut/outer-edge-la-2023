@@ -1,11 +1,5 @@
-import Image from 'next/image';
 import Head from 'next/head';
 import Nav from '../components/Nav';
-import Intro from '../components/Intro';
-import styles from '../styles/Home.module.css';
-import Chatter from '../components/Chatter';
-import Footer from '../components/Footer';
-import Advertiser from '../components/Advertiser';
 import Caller from "../contract/callerContract.json";
 import {
   useAccount,
@@ -86,26 +80,34 @@ export default function Ad() {
   return (
     <div className="bg-black h-screen w-full ">
       <Head>
-      <title>Talking NFT</title>
-      <meta name="description" content="Created at Outer Edge Hackerthon LA" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+        <title>Talking NFT</title>
+        <meta name="description" content="Created at Outer Edge Hackerthon LA" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <Nav />
-    <div className="flex flex-col items-center justify-center h-screen">
-      <button
-        className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
-        onClick={callingStream}
-      >
-        Start advertising
-      </button>
-      <button
-        className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
-        onClick={stopStreamFunction}
-      >
-        Stop stream
-      </button>
-    </div>
+      <Nav />
+      <div className="flex flex-col items-center justify-center h-screen">
+        <button
+          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold mb-5`}
+          onClick={callingStream}
+        >
+          Start advertising
+        </button>
+        <button
+          className={`bg-donut hover:bg-yellow-600 rounded-full px-12 py-2 text-black font-bold`}
+          onClick={stopStreamFunction}
+        >
+          Stop stream
+        </button>
+        <iframe
+          src="https://console.superfluid.finance/mumbai/accounts/0xf550146991831be20872fa4809b23dadcc371c43?tab=streams"
+          width="100%"
+          height="600px"
+          frameBorder="0"
+          className="m-5"
+        ></iframe>
+      </div>
+      
     </div>
   );
 }
